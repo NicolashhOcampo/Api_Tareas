@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel, create_engine, Session
-from models import note, category
+from models import model
 
 sqlite_file_name = "database.db"
 sqlite_url = f"sqlite:///{sqlite_file_name}"

@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlmodel import Session, select
-from models.note import Note
+from models.model import Note
 
 def get_notes_crud(session: Session, limit: int = 10, offset: int = 0):
     statement = select(Note).offset(offset).limit(limit)

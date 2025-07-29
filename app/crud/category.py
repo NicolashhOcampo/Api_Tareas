@@ -1,5 +1,5 @@
 from sqlmodel import Session, select
-from models.category import Category
+from models.model import Category
 
 def get_categories_crud(session: Session, limit: int = 10, offset: int = 0):
     statement = select(Category).offset(offset).limit(limit)
