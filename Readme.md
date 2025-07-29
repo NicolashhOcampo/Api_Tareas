@@ -12,3 +12,13 @@ source .venv/Scripts/activate
 fastapi dev app/main.py
 
 ```
+
+## Migraciones
+```bash
+#Crear migracion
+alembic revision --autogenerate -m <nombre_migracion>
+
+#Aplicar migraciones
+alembic upgrade head
+
+```
