@@ -6,3 +6,4 @@ class Note(SQLModel, table=True):
     title: str = ""
     content: str
     update_at: datetime = Field(index=True)
+    category_id: int | None = Field(default=None, foreign_key="category.id")

@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from routes.category import category_router
-from db import engine, SQLModel
+from db import create_db_and_tables
 
 app = FastAPI()
 
-SQLModel.metadata.create_all(engine)
+create_db_and_tables()
 
 @app.get("/")
 async def root():

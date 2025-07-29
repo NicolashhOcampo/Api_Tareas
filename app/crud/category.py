@@ -14,3 +14,21 @@ def create_category_crud(session: Session, name: str):
     session.commit()
     session.refresh(new_category)
     return new_category
+
+def update_category_crud(session: Session, id: int, name: str):
+    category = session.get(Category, id)
+    if not category:
+        return None
+    category.name = name
+    session.add(category)
+    session.commit()
+    session.refresh(category)
+    return category
+
+def delete_category_crud(session: Session, id: int):
+    category = session.get(Category, id)
+    if not category:
+        return None
+    session.delete(category)
+    session.commit()
+    return category
