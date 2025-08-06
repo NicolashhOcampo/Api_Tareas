@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from crud.note import get_notes_crud, get_note_by_id_crud, create_note_crud
 from db import Session, engine
+from models.model import Note
 
 note_router = APIRouter(prefix="/notes", tags=["notes"])
 
@@ -23,7 +24,7 @@ async def get_note(note_id: int):
         note = get_note_by_id_crud(session, note_id)
         return note if note else {"message": "Note not found"}
 
-@note_router.post("/")
+@note_router.post("/", response_model=Note)
 async def create_note(note: NoteCreate):
     with Session(engine) as session:
         new_note = create_note_crud(session, title=note.title, content=note.content, category_id=note.category_id)
